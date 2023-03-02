@@ -1,0 +1,91 @@
+﻿@model Infrastructure.Model.EmployeeModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <h1>Employee</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="~/Admin/Employee">Employee(s)</a></li>
+            <li class="breadcrumb-item">Add Employee</li>
+        </ol>
+    </nav>
+</div>
+ <section>
+       <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#page-description">Employee Info</button>
+                            </li>
+                        </ul>
+                        <form class="row g-3" method="post" asp-action="Add" asp-controller="Employee" enctype="multipart/form-data">
+ 
+                                    <div class="col-md-6">
+                                            <label for="fullName" class="form-label">Full Name</label>
+                                            <input asp-for="FullName" class="form-control" placeholder="Full Name" maxlength="50" />
+                                            <span asp-validation-for="FullName" class="text-danger"></span>
+                                   </div>
+
+                                    <div class="col-md-6">
+                                            <label for="fullName" class="form-label">Department</label>
+                                            <input asp-for="Department" class="form-control" placeholder="Department" maxlength="50" />
+                                            <span asp-validation-for="Department" class="text-danger"></span>
+                                    </div>
+                           
+
+                                    <div class="col-md-6">
+                                            <label for="fullName" class="form-label">Pan No.</label>
+                                            <input asp-for="PanNo" class="form-control" placeholder="Pan No." maxlength="50" />
+                                            <span asp-validation-for="PanNo" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                            <label for="fullName" class="form-label">Adhaar No.</label>
+                                            <input asp-for="AdhaarNo" class="form-control" placeholder="Adhaar No." maxlength="50" onkeypress="return onlyNumberKey(event);"/>
+                                            <span asp-validation-for="AdhaarNo" class="text-danger"></span>
+                                   </div>
+                                   <div class="col-md-6">
+                                        <label for="fullName" class="form-label">Job Type</label>
+                                        <select name="JobType" id="validationCustom01" class="form-select" required>
+                                            <option selected disabled value="">Choose...</option>
+                                            <option>Trainee</option>
+                                            <option>Permanent</option>
+                                            <option>Part-Time</option>
+                                            <option>Contract</option>
+                                        </select>
+                                        <span asp-validation-for="JobType" class="text-danger"></span>
+
+                                   </div>
+                                   <div class="col-md-6">
+                                        <label id="Date" for="fullName" class="form-label">Start Date</label>
+                                        <input type="date" name="StartDate" class="form-control" id="Date" required/>
+                                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                                    </div>
+                                   <div class="col-md-6">
+                                        <label for="fullName" class="form-label">Job Title</label>
+                                        <input asp-for="JobTitle" class="form-control" placeholder="Job Title" maxlength="50" />
+                                        <span asp-validation-for="JobTitle" class="text-danger"></span>
+                                   </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+       </div>
+ </section>
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

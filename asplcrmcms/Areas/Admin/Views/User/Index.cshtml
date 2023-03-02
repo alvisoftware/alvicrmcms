@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Infrastructure.Model.UserModel>
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pagetitle">
+    <h1>Users</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">Users</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Username</td>
+                                    <td>
+                                        @item.Role
+                                    </td>
+                                    <td>@item.Isactive</td>
+                                    <td>
+                                        <a href="~/Admin/User/Delete?_sPageId=@item._id"><i class="bi bi-folder"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

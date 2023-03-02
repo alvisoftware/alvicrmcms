@@ -1,0 +1,64 @@
+﻿@model Infrastructure.Model.UserModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<div class="pagetitle">
+    <h1>Users</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="~/Admin/Users">Users</a></li>
+            <li class="breadcrumb-item">Add Users</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3" method="post" asp-action="Add" asp-controller="User" enctype="multipart/form-data">
+                        
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input asp-for="Username" class="form-control" placeholder="User Name" maxlength="40" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                                <label for="floatingZip">User Name</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input asp-for="Role" class="form-control" placeholder="Role" maxlength="15" />
+                                <span asp-validation-for="Role" class="text-danger"></span>
+                                <label for="floatingZip">Role</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input asp-for="Pwd" class="form-control" placeholder="Password" type="password" maxlength="12" />
+                                <span asp-validation-for="Pwd" class="text-danger"></span>
+                                <label for="floatingZip">Password</label>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form><!-- End floating Labels Form -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

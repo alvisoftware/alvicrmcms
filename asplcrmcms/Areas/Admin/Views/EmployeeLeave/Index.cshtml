@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Infrastructure.Model.EmployeeLeaveModel>
+
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<h1>Index <a href="/Admin/EmployeeLeave/Add"><i class="bi bi-file-plus"></i></a></h1>
+
+<div class="pagetitle">
+    <h1>List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">EmployeeLeaves</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped" id="tblList">
+                        <thead>
+                            <tr>
+                                <th scope="col">Employee ID</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Employee Leave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.EmployeeID
+                                    </td>
+                                    <td>
+                                        @item.EmployeeName
+                                    </td>
+                                    <td>
+                                        @item.Date
+                                    </td>
+                                    <td>
+                                        @item.EmployeeLeave
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Infrastructure.Model.PortfolioModel>
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<h1>Index <a href="/Admin/Portfolio/Add"><i class="bi bi-file-plus"></i></a></h1>
+<div class="pagetitle">
+    <h1>Pages</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">Portfolio</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Portfolio Name</th>
+                                <th scope="col">Technologies</th>
+                                <th scope="col">Page URL</th>
+                                <th scope="col">Order</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Title</td>
+                                    <td>
+                                        @item.Technologies
+                                    </td>
+                                    <td>
+                                        @item.Pageurl
+                                    </td>
+                                    <td>
+                                        @item.Order
+                                    </td>
+                                    <td>@item.IsActive</td>
+                                    <td>
+                                        <a href="~/Admin/Portfolio/Delete?_sPortfolioId=@item._id">Delete</a>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

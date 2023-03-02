@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Infrastructure.Model.WorkingDaysModel>
+
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<h1>Index <a href="/Admin/WorkingDays/Add"><i class="bi bi-file-plus"></i></a></h1>
+
+<div class="pagetitle">
+    <h1>List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">WorkingDays</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped" id="tblList">
+                        <thead>
+                            <tr>
+                                <th scope="col">Month </th>
+                                <th scope="col">Year</th>
+                                <th scope="col">WorkingDays</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Month
+                                    </td>
+                                    <td>
+                                        @item.Year
+                                    </td>
+                                    <td>
+                                        @item.WorkingDays
+                                    </td>
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

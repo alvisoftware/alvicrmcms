@@ -1,0 +1,113 @@
+﻿@using static Infrastructure.Model.CompanyInvoice;
+@model Infrastructure.Model.CompanyInvoice
+@{
+
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+
+}
+<div class="pagetitle">
+    <h1>Invoice</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="~/Admin/Invoice">Invoice(s)</a></li>
+            <li class="breadcrumb-item">Add Invoice</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-tabs-bordered">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#page-description">Invoice Details</button>
+                        </li>
+                    </ul>
+
+
+                    <!-- Multi Columns Form -->
+                    <form class="row g-3" method="post" asp-action="Add" asp-controller="Invoice" enctype="multipart/form-data" >
+                        <div class="col-md-4">
+                            <label for="floatingSelect" class="form-label">Select Company</label>
+                            <select asp-for="CompanyName" class="form-select" asp-items="@ViewBag.company" ></select>
+                            <span asp-validation-for="CompanyName" class="text-danger"></span>
+                               
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputEmail5" class="form-label">Select Project</label>
+                            <select asp-for="ProjectName" class="form-select" asp-items="@ViewBag.project"></select>
+                            <span asp-validation-for="ProjectName" class="text-danger"></span>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputZip" class="form-label">Invoice</label>
+                            <input asp-for="InvoiceNo" class="form-control" maxlength="50" id="Invoice" onkeypress="return onlyNumberKey(event)" required>
+                            <span asp-validation-for="InvoiceNo" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label for="inputAddress5" class="form-label">Description</label>
+                            <input name="service1title" id="service1title" class="form-control" placeholder="Description" maxlength="150" required>
+                            <div class="py-3">
+                            <input name="service2title" id="service2title" class="form-control" placeholder="Description2" maxlength="150">
+                            </div>
+                            <input name="service3title" id="service3title" class="form-control" placeholder="Description3" maxlength="150">
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputAddress2" class="form-label">Quantity</label>
+                            <input name="service1overview" id="service1overview" class="form-control" maxlength="50" placeholder="Quantity" onkeypress="return onlyNumberKey(event);" required>
+                            <div class="py-3">
+                                <input name="service2overview" id="service2overview" class="form-control" maxlength="50" placeholder="Quantity2" onkeypress="return onlyNumberKey(event);" >
+                            </div>
+                            <input name="service3overview" id="service3overview" class="form-control" maxlength="50" placeholder="Quantity3" onkeypress="return onlyNumberKey(event);" >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputCity" class="form-label">Rate</label>
+                            <input name="service1titlewithicon" id="service1titlewithicon" class="form-control" maxlength="50" placeholder="Rate" onkeypress="return onlyNumberKey(event);" required>
+                            <div class="py-3">
+                                <input name="service2titlewithicon" id="service2titlewithicon" class="form-control" maxlength="50"  placeholder="Rate2" onkeypress="return onlyNumberKey(event);" >
+                            </div>
+                            <input name="service3titlewithicon" id="service3titlewithicon" class="form-control" maxlength="50" placeholder="Rate3" onkeypress="return onlyNumberKey(event);" >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputState" class="form-label">Total</label>
+                            <input asp-for="Total"  class="form-control" maxlength="50" id="Total" onkeypress="return onlyNumberKey(event)" required>
+                            <span asp-validation-for="Total" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputZip" class="form-label">Tax</label>
+                            <input asp-for="Tax"  class="form-control" maxlength="50" id="inputZip" required>
+                            <span asp-validation-for="Tax" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                             <label for="inputZip" class="form-label">Final Amount</label>
+                             <input asp-for="FinalAmount"  class="form-control" maxlength="50" id="FinalAmount" onkeypress="return onlyNumberKey(event)" required>
+                            <span asp-validation-for="FinalAmount" class="text-danger"></span>
+                         </div>
+                        <div class="col-6">
+                            <label class="form-label">Status</label>
+                            @Html.DropDownList("EMail",new SelectList(Enum.GetValues(typeof(mail))),"Select Email",new{@class="form-control"})
+                            <span asp-validation-for="email" class="text-danger"></span>
+                       </div>
+                        <div class="col-md-4">
+                            <label for="inputPassword5" class="form-label">Date</label>
+                            <input type="date" name="Date" class="form-control" id="inputPassword5" required>
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form><!-- End Multi Columns Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

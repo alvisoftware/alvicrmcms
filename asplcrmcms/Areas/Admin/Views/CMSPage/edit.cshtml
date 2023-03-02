@@ -1,0 +1,86 @@
+﻿@model Infrastructure.Model.CMSPageModel
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<div class="pagetitle">
+    <h1>Menu</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="~/Admin/CMSPage">CMS Pages</a></li>
+            <li class="breadcrumb-item">Edit CMSPage</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3" method="post" asp-action="Edit" asp-controller="CMSPage" enctype="multipart/form-data">
+                        <input asp-for="_id" type="hidden" />
+                        <input asp-for="Pageurl" type="hidden" />
+                        <input asp-for="Menuid" type="hidden" />
+                        <div class="row mb-3">
+                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Page Name</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input asp-for="Pagename" class="form-control" placeholder="Page Name" maxlength="75" />
+                                <span asp-validation-for="Pagename" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">SEO Page Title</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input asp-for="Pagetitle" class="form-control" placeholder="Page Title" maxlength="75" />
+                                <span asp-validation-for="Pagetitle" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">SEO Keywords</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input asp-for="Pagekeywords" class="form-control" placeholder="Ex. development, application" maxlength="170" />
+                                <span asp-validation-for="Pagekeywords" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">SEO Description</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input asp-for="Pagedescription" class="form-control" placeholder="Ex. Page Description" maxlength="170" />
+                                <span asp-validation-for="Pagedescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Page Content</label>
+                            <div class="col-md-8 col-lg-9">
+                                 <textarea class="tinymce-editor" asp-for="Pagecontent">
+                                        </textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form><!-- End floating Labels Form -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

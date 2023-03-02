@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Infrastructure.Model.CompanyInvoice>
+
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<h1>Index <a href="/Admin/Invoice/Add"><i class="bi bi-file-plus"></i></a></h1>
+
+<div class="pagetitle">
+    <h1>List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">Invoice</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped" id="tblList">
+                        <thead>
+                            <tr>
+                                <th scope="col">Company Name/Project Name </th>                               
+                                <th scope="col">Invoice No.</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Tax/Final Amount</th>
+                                <th scope="col">Mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.CompanyName<br>@item.ProjectName
+                                    </td>
+                                    <td>
+                                        @item.InvoiceNo
+                                    </td>
+                                    <td>
+                                        @item.Total
+                                    </td>
+                                    <td>
+                                        @item.Tax<br> @item.FinalAmount
+                                    </td>
+                                    <td>
+                                       @item.email
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

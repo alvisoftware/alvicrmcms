@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Infrastructure.Model.MenuModel>
+
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index <a href="/Admin/Menu/Add"><i class="bi bi-file-plus"></i></a></h1>
+<div class="pagetitle">
+    <h1>Menu</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">Menu</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Parent Menu</th>
+                                <th scope="col">Sub Menu</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        @foreach (var subMenu in item.Submenus)
+                                        {
+                                            <span>@subMenu.Name</span>
+                                        }
+                                    </td>
+                                    <td>@Html.DisplayNameFor(model => model.IsActive)</td>
+                                    <td><button type="button" class="btn btn-sm btn-success"><i class="bi bi-check-circle"></i></button><button type="button" class="btn btn-sm btn-dark"><i class="bi bi-folder"></i></button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

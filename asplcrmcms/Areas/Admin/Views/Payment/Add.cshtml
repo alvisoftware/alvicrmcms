@@ -1,0 +1,79 @@
+﻿@model Infrastructure.Model.PaymentModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <h1>Payment</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="~/Admin/Payment">Payment(s)</a></li>
+            <li class="breadcrumb-item">Add Payment</li>
+        </ol>
+    </nav>
+</div>
+<section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-tabs-bordered">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#page-description">Employee Info</button>
+                        </li>
+                    </ul>
+                    <form class="row g-3" method="post" asp-action="Add" asp-controller="Payment" enctype="multipart/form-data">
+
+                        <div class="col-md-6">
+                            <label for="floatingSelect" class="form-label">Project</label>
+                            <select asp-for="Project" class="form-select" asp-items="@ViewBag.project" ></select>
+                            <span asp-validation-for="Project" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">PaidDate</label>
+                            <input type="date" name="PaidDate" class="form-control" />
+                            <span asp-validation-for="PaidDate" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">Amount</label>
+                            <input asp-for="Amount" class="form-control" placeholder="Amount" maxlength="50" onkeypress="return onlyNumberKey(event);" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">TDS</label>
+                            <input asp-for="TDS" class="form-control" placeholder="TDS" maxlength="50" onkeypress="return onlyNumberKey(event);" />
+                            <span asp-validation-for="TDS" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">Remarks</label>
+                            <input asp-for="Remarks" class="form-control" placeholder="Remarks" maxlength="150" />
+                            <span asp-validation-for="Remarks" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">Reference No.</label>
+                            <input asp-for="RefNo" class="form-control" placeholder="Reference no." maxlength="50" onkeypress="return onlyNumberKey(event);"  />
+                            <span asp-validation-for="RefNo" class="text-danger"></span>
+
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

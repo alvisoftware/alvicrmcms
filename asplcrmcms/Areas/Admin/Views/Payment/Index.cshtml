@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Infrastructure.Model.PaymentModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<h1>Index <a href="/Admin/Payment/Add"><i class="bi bi-file-plus"></i></a></h1>
+
+<div class="pagetitle">
+    <h1>List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">Payment</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped" id="tblList">
+                        <thead>
+                            <tr>
+                                <th scope="col">Project</th>
+                                <th scope="col">PaidDate</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">TDS</th>
+                                <th scope="col">Remarks/Ref No.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Project
+                                    </td>
+                                    <td>
+                                        @item.PaidDate
+                                    </td>
+                                    <td>
+                                        @item.Amount
+                                    </td>
+                                    <td>
+                                        @item.TDS
+                                    </td>
+                                    <td>
+                                        @item.Remarks<br>@item.RefNo
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
