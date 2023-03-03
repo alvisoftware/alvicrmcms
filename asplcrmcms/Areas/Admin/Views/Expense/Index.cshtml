@@ -1,17 +1,18 @@
-﻿@model IEnumerable<Infrastructure.Model.EmployeeLeaveModel>
-
-
+﻿@model IEnumerable<Infrastructure.Model.ExpenseModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
-<h1>Index <a href="/Admin/EmployeeLeave/Add"><i class="bi bi-file-plus"></i></a></h1>
+<h1>Index <a href="/Admin/Expense/Add"><i class="bi bi-file-plus"></i></a></h1>
 
 <div class="pagetitle">
     <h1>List</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/Admin/Dashboard">Home</a></li>
-            <li class="breadcrumb-item">EmployeeLeaves</li>
+            <li class="breadcrumb-item"><a href="/Dashboard">Home</a></li>
+            <li class="breadcrumb-item">Expense</li>
         </ol>
     </nav>
 </div>
@@ -23,24 +24,24 @@
                     <table class="table table-striped" id="tblList">
                         <thead>
                             <tr>
-                                
-                                <th scope="col">Employee Name</th>
-                                <th scope="col">Date</th>
-                                
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Date</th>                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    
                                     <td>
-                                        @item.EmployeeName
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @item.Amount
                                     </td>
                                     <td>
                                         @item.Date
                                     </td>
-                                    
                                 </tr>
                             }
                         </tbody>

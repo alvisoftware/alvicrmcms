@@ -29,13 +29,7 @@
 
                         <div class="tab-content pt-2">
                             <div class="tab-pane fade show active profile-overview" id="page-description">
-                                <div class="row mb-3">
-                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Employee ID</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input asp-for="EmployeeID" class="form-control" placeholder="Employee ID" maxlength="50"  required />
-                                        <span asp-validation-for="EmployeeID" class="text-danger"></span>
-                                    </div>
-                                </div>
+                                
                                 <div class="row mb-3">
                                     <label for="floatingSelect" class="col-md-4 col-lg-3 col-form-label">Employee Name</label>
                                     <div class="col-md-8 col-lg-9">
@@ -51,15 +45,7 @@
                                     </div>
 
                                 </div>
-                                <div class="row mb-3">
-                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Employee Leave</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input asp-for="EmployeeLeave" class="form-control" placeholder="No. of Leaves" maxlength="50" onkeypress="return onlyNumberKey(event)" required />
-                                        <span asp-validation-for="EmployeeLeave" class="text-danger"></span>
-                                    </div>
-
-                                </div>
-
+                           
                             </div>
                         </div>
                         <div class="text-center">

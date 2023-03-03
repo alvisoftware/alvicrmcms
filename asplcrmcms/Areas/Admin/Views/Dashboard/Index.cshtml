@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Infrastructure.Model.DashboardModel>
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+
+                <!-- Project Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Total Project</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bx bxs-book-content"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@ViewBag.Project</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Project Card -->
+                <!-- Revenue Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card revenue-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Revenue</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-currency-dollar"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@ViewBag.Revenue</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Revenue Card -->
+                <!-- Customers Card -->
+                <div class="col-xxl-4 col-xl-12">
+
+                    <div class="card info-card customers-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Expenses</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cash-coin"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@ViewBag.Expense</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div><!-- End Customers Card -->
+                <!-- Reports -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Upcoming Holidays</h5>
+                            <div id="reportsChart"></div>
+                            <ul class="list-group">
+                            <li class="list-group-item">8 March</li>
+                            <li class="list-group-item">30 March</li>
+                            <li class="list-group-item">4 April</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- End Reports -->
+          </div>
+        </div>
+      </div>
+</section>

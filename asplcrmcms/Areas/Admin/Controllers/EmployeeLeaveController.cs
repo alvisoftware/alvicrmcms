@@ -45,11 +45,8 @@ namespace asplcrmcms.Areas.Admin.Controllers
             public async Task<IActionResult> Add(EmployeeLeaveModel eLeave)
             {
                 ModelState.Clear();
-                if (string.IsNullOrEmpty(eLeave.EmployeeID))
-                    ModelState.AddModelError("EmployeeID", "Employee ID is required");
+               
                 if (string.IsNullOrEmpty(eLeave.EmployeeName))
-                    ModelState.AddModelError("EmployeeLeave", "Employee Leave is required");
-                if (string.IsNullOrEmpty(eLeave.EmployeeLeave))
                     ModelState.AddModelError("EmployeeLeave", "Employee Leave is required");
                 await _eLeave.ModifyLeaveDetails(eLeave);
                 return RedirectToAction();
